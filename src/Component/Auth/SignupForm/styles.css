@@ -26,7 +26,7 @@
     color: #eaf6ff;
 }
 
-.login-link a {
+.login-link span {
     color: white;
     font-weight: bold;
     text-decoration: none;

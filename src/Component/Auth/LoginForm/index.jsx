@@ -1,11 +1,22 @@
 import React from 'react'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './styles.css';
 import Button from '../../Shared/Button';
 import Input from '../../Shared/Input';
 
 
 
-const LoginForm = () => {
+const LoginForm = ({toggle}) => {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState()
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+    console.log("DO Something");
+    }, [email]);
+
     return (
         <div className="login-container">
             <h2>Login</h2>
@@ -15,6 +26,7 @@ const LoginForm = () => {
                         name={"email"}
                         placeholder={"Type your email"}
                         required={true}
+                        onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <Input label={"Password"}
@@ -22,14 +34,29 @@ const LoginForm = () => {
                         name={"password"}
                         placeholder={"Type your password"}
                         required={true}
+                        onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <Button
                     text={"Login"}
-                    onClick={() => { /* Handle login */ }}
+                    onClick={async () => {
+                    console.log(email, password);
+
+                    // const res = await axios.post("loginUrl", {
+                    //    email,
+                    //   password,
+                    // });
+
+            if (true) {
+              // navigate to dashboard
+                navigate("/dashboard");
+            } else {
+              // display error on the ui
+            }
+        }}
                 />
             </form>
-            <p className="signup-link">Don't have an account? <a href="/signup">Sign Up now</a></p>
+            <p className="signup-link">Don't have an account? <span onClick={toggle}>Sign Up now</span></p>
         </div>
     )
 }
