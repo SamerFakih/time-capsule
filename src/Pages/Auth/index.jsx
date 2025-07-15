@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import LoginForm from "../../Component/Auth/LoginForm/index.jsx";
 import SignUpForm from "../../Component/Auth/SignupForm/index.jsx";
 
-const Auth = () => {
-    const [isLogin, setIsLogin] = useState(true);
+const Auth = ({signup=true}) => {
+    const [isLogin, setIsLogin] = useState(signup);
 
     const switchForm = () => {
         setIsLogin(!isLogin);
