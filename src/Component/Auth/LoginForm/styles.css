@@ -26,8 +26,9 @@
     color: #eaf6ff;
 }
 
-.signup-link a {
+.signup-link span {
     color: white;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
 }
