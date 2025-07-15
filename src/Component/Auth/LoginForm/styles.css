@@ -1,0 +1,33 @@
+.login-container {
+    background-color: #4396d6;
+    padding: 40px 30px;
+    border-radius: 8px;
+    width: 320px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 17vh auto;
+}
+
+.login-container h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-link {
+    font-size: 12px;
+    margin-top: 15px;
+    color: #eaf6ff;
+}
+
+.signup-link a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
-import "./index.css"
+import "./Styles/index.css";
+import Apis from './Apis/Index.jsx';
 
 function App() {
   return (
-    <div>Welcome to the Time Capsule App</div>
+    <Apis />
   );
 }
 
