@@ -45,6 +45,11 @@
   line-height: 1;
 }
 
+.capsule-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+}
+
 @media (max-width: 480px) {
   .capsule-title {
     font-size: 1rem;
