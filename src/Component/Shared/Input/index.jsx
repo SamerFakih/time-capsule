@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.css';
 
-const Input = ({ label, type, name, placeholder, required, onChange }) => {
+const Input = ({ label, type, name, placeholder, required, onChange ,accept,onSelect }) => {
     return (
         <>
             <label className='input-label'>{label}</label>
@@ -11,6 +11,8 @@ const Input = ({ label, type, name, placeholder, required, onChange }) => {
                     required={required}
                     className='input-input'
                     onChange={onChange}
+                    accept={accept}
+                    onSelect={onSelect}
             />
         </>
     )
