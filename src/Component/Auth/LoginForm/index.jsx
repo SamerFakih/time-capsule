@@ -49,7 +49,7 @@ const LoginForm = ({toggle}) => {
 
             if (true) {
               // navigate to dashboard
-                navigate("/dashboard");
+                navigate("/user");
             } else {
               // display error on the ui
             }

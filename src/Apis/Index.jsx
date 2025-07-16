@@ -3,6 +3,8 @@ import React from 'react';
 import Auth from '../Pages/Auth/index.jsx';
 import Landing from '../Pages/Landing/index.jsx';
 import Navbar from '../Component/Shared/Navbar/index.jsx';
+import User from '../Pages/User/index.jsx';
+import CreateCapsule from '../Pages/CreateCapsule/index.jsx';
 
 const Apis = () => {
     return (
@@ -13,6 +15,8 @@ const Apis = () => {
             <Route path="/auth" element={<Auth />} />
             <Route path="/login" element={<Auth signup={true} />} />
             <Route path="/signup" element={<Auth signup={false} />} />
+            <Route path="/user" element={<User />} />
+            <Route path='/create' element={<CreateCapsule />} />
         </Routes>
     </>
     )

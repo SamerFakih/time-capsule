@@ -1,0 +1,58 @@
+.capsule-container {
+  margin: 1rem auto;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.capsule-header {
+  background-color: #3498db;
+  color: white;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.capsule-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.add-button {
+  background-color: white;
+  color: #3498db;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-button:hover {
+  background-color: #ecf0f1;
+}
+
+.plus-icon {
+  display: block;
+  line-height: 1;
+}
+
+@media (max-width: 480px) {
+  .capsule-title {
+    font-size: 1rem;
+  }
+
+  .add-button {
+    width: 24px;
+    height: 24px;
+    font-size: 0.9rem;
+  }
+}
