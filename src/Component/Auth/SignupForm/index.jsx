@@ -4,17 +4,41 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from '../../Shared/Button';
 import Input from '../../Shared/Input';
+import request from '../../../Apis/requests';
 
 const SignupForm = ({toggle}) => {
-    const [fullName, setFullName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("DO Something");
-    }, [fullName]);
+        console.log("email:",email);
+        },[email]);
+
+    const handleSignup = async (e) => {
+    e.preventDefault();
+    setError("");
+    
+    try {
+        const res = await request({
+        url: 'guest/register',
+        method: 'post',
+        data: { name, email, password },
+        });
+    localStorage.setItem('token', res.token);
+    if (res) {
+        navigate("/user");
+    } else {
+        setError("Invalid email or password");
+    }
+    } catch (err) {
+        setError("Login failed. Please try again.");
+    }
+
+};
 
     return (
     <div className="signup-container">
@@ -22,10 +46,10 @@ const SignupForm = ({toggle}) => {
             <form className="signup-form">
                 <Input label={"Full Name"}
                         type={"text"}
-                        name={"fullName"}
+                        name={"name"}
                         placeholder={"Type your full name"}
                         required={true}
-                        onChange={(e) => setFullName(e.target.value)}
+                        onChange={(e) => setName(e.target.value)}
                 />
                 <Input label={"Email"}
                         type={"text"}
@@ -43,24 +67,11 @@ const SignupForm = ({toggle}) => {
                         onChange={(e) => setPassword(e.target.value)}
                 />
 
+                {error && <p className="error">{error}</p>}
+
                 <Button
                     text={"Sign Up"}
-                    onClick={async () => {
-                        console.log(fullName, email, password);
-
-                        // const res = await axios.post("signupUrl", {
-                        //     fullName,
-                        //     email,
-                        //     password,
-                        // });
-
-                        if (true) {
-                            // navigate to dashboard
-                            navigate("/dashboard");
-                        } else {
-                            // display error on the ui
-                        }
-                    }}
+                    onClick={handleSignup}
                 />
             </form>
             <p className="login-link">Already have an account? <span onClick={toggle}>Log In</span></p>

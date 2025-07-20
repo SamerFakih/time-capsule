@@ -4,18 +4,40 @@ import { useNavigate } from "react-router-dom";
 import './styles.css';
 import Button from '../../Shared/Button';
 import Input from '../../Shared/Input';
-
+import request from '../../../Apis/requests';
 
 
 const LoginForm = ({toggle}) => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState()
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
+
     useEffect(() => {
-    console.log("DO Something");
+    console.log("Email updated:", email);
     }, [email]);
+
+    const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+    const res = await request({
+        url: 'guest/login',
+        method: 'post',
+        data: { email, password },
+        });
+    localStorage.setItem('token', res.token);
+    if (res) {
+        navigate("/user");
+    } else {
+        setError("Invalid email or password");
+    }
+    } catch (err) {
+        setError("Login failed. Please try again.");
+    }
+};
 
     return (
         <div className="login-container">
@@ -37,24 +59,10 @@ const LoginForm = ({toggle}) => {
                         onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <Button
-                    text={"Login"}
-                    onClick={async () => {
-                    console.log(email, password);
+                {error && <p className="error">{error}</p>}
 
-                    // const res = await axios.post("loginUrl", {
-                    //    email,
-                    //   password,
-                    // });
-
-            if (true) {
-              // navigate to dashboard
-                navigate("/user");
-            } else {
-              // display error on the ui
-            }
-        }}
-                />
+                <Button onClick={handleLogin}
+                text={"Login"} />
             </form>
             <p className="signup-link">Don't have an account? <span onClick={toggle}>Sign Up now</span></p>
         </div>
