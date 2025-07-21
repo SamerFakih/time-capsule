@@ -7,8 +7,8 @@ const Navbar = () => {
         <h1 className="logo">TIME-CAPSULE</h1>
         <nav className="nav-links">
             <a href="/">Home</a>
-            <a href="/contact">Contact us</a>
-            <a href="/about">About us</a>
+            <a href="/user">Capsule</a>
+            <a href="/public">Public</a>
         </nav>
         </header>
     )

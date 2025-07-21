@@ -30,7 +30,7 @@ const SignupForm = ({toggle}) => {
         });
     localStorage.setItem('token', res.token);
     if (res) {
-        navigate("/user");
+        navigate("/");
     } else {
         setError("Invalid email or password");
     }

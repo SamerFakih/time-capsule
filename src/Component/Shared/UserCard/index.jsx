@@ -12,7 +12,8 @@ const UserCapsuleCard = ({
     color,
     mood,
     surprise,
-    tags
+    tags,
+    location
 }) => {
     return (
     <div className="userdata" style={{ borderColor: color }}>
@@ -38,6 +39,12 @@ const UserCapsuleCard = ({
             <p><strong>Audio Note:</strong></p>
             <audio controls src={audio}></audio>
         </div>
+        )}
+
+        {location && (
+        <p className="capsule-tags">
+            <strong>location:</strong> {location}
+        </p>
         )}
 
         {tags && (

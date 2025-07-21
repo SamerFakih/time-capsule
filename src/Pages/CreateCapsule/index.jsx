@@ -84,7 +84,7 @@ const HandleNewCapsule = async () => {
                         type={"textarea"}
                         name={"message"}
                         placeholder={"Write your message to the future..."} r
-                        equired
+                        required
                         onChange={(e) => setMessage(e.target.value)} />
 
         <label>Attachments:</label>
@@ -162,7 +162,7 @@ const HandleNewCapsule = async () => {
         onClick={HandleNewCapsule}
         />
         </div>
-    );
+);
 };
 
 export default CreateCapsule;
