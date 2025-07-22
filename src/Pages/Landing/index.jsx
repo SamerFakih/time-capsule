@@ -7,6 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Landing = () => {
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/');
+    };
 
     return (
     <div className="landing-container">
@@ -14,9 +20,16 @@ const Landing = () => {
         <main className="main-content">
         <h2>Send a Message to the Future</h2>
         <p>Save memories, photos, and thoughts. Open them when the time is right</p>
+
         <div className="buttons">
-            <button className="btn" onClick={() => navigate('/login')}>Login</button>
-            <button className="btn" onClick={() => navigate('/signup')}>Signup</button>
+            {token ? (
+                <button className="btn" onClick={handleLogout}>Logout</button>
+            ) : (
+                <>
+                    <button className="btn" onClick={() => navigate('/login')}>Login</button>
+                    <button className="btn" onClick={() => navigate('/signup')}>Signup</button>
+                </>
+            )}
         </div>
 
         <section className="section">
