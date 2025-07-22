@@ -5,6 +5,7 @@ import Landing from '../Pages/Landing/index.jsx';
 import Navbar from '../Component/Shared/Navbar/index.jsx';
 import User from '../Pages/User/index.jsx';
 import CreateCapsule from '../Pages/CreateCapsule/index.jsx';
+import PublicPage from '../Pages/Public/index.jsx';
 
 const Apis = () => {
     return (
@@ -17,6 +18,7 @@ const Apis = () => {
             <Route path="/signup" element={<Auth signup={false} />} />
             <Route path="/user" element={<User />} />
             <Route path='/create' element={<CreateCapsule />} />
+            <Route path='/public' element = {<PublicPage/>} />
         </Routes>
     </>
     )

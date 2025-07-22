@@ -13,13 +13,13 @@
 
 .capsule-form-container h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
   font-size: 1.8rem;
 }
 
 .capsule-form {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 

@@ -1,0 +1,10 @@
+.expand-btn {
+    width: 100%;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+}

@@ -8,30 +8,67 @@ import request from '../../Apis/requests';
 
 const User = () => {
 
-
+    
     const [capsules, setCapsules] = useState([]);
     const Navigate = useNavigate()
+    const token = localStorage.getItem('token');
+    
     
     const Redirect = () => {
         Navigate("/create")
     }
 
     useEffect(() => {
+    if (!token) {
+        Navigate('/'); // or any page you want
+    }
+});
+
+    useEffect(() => {
     const FetchCapsules = async () => {
         try {
+
             const res = await request({
                 url: 'capsule',
                 method: 'get',
             });
-            console.log(res)
-            setCapsules(res);
+            const userCapsules =  res.map((capsule) => {
+                
+                let image =null;
+                let audio =null;
+
+                capsule.attachments?.forEach((attachment) => {
+                
+                const type = attachment.type.toLowerCase();
+
+                if (type.startsWith("image")) image = attachment.encoded;
+                if (type.startsWith("audio")) audio = attachment.encoded;
+
+            });
+            
+            
+            return {
+                title: capsule.title,
+                message: capsule.message,
+                image,
+                audio,
+                reveal:capsule.revealed_at,
+                privacy: capsule.privacy,
+                color: capsule.color,
+                mood: capsule.mood,
+                tags: capsule.tags,
+                location: capsule.location
+            }
+
+            });
+            setCapsules(userCapsules);
         } catch (error) {
             console.error("Failed to fetch capsules:", error);
         }
     };
 
     FetchCapsules();
-}, []);
+},[]);
 
 
 

@@ -3,6 +3,7 @@ import './styles.css';
 import request from '../../Apis/requests';
 import Input from '../../Component/Shared/Input';
 import Button from '../../Component/Shared/Button';
+import { useNavigate } from "react-router-dom";
 
 const CreateCapsule = () => {
         const [title, setTitle] = useState("");
@@ -14,6 +15,7 @@ const CreateCapsule = () => {
         const [color, setColor] = useState("");
         const [mood, setMood] = useState("");
         const [Tags, setTags] = useState("");
+        const navigate = useNavigate();
 
 const fileToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -62,8 +64,9 @@ const HandleNewCapsule = async () => {
                 method: 'post',
                 data: formData,
         });
-
         console.log("Capsule created:", res);
+        navigate("/user");
+        
         } catch (err) {
                 console.error("Error:", err.response?.data || err.message);
         }
@@ -84,7 +87,7 @@ const HandleNewCapsule = async () => {
                         type={"textarea"}
                         name={"message"}
                         placeholder={"Write your message to the future..."} r
-                        equired
+                        required
                         onChange={(e) => setMessage(e.target.value)} />
 
         <label>Attachments:</label>
@@ -105,7 +108,7 @@ const HandleNewCapsule = async () => {
 
                 <Input label={"Reveal Date:"}
                         type={"date"}
-                        name={"reveal"}
+                        name={"revealed_at"}
                         required
                         onChange={(e) => setReveal(e.target.value)}
                         />
@@ -162,7 +165,7 @@ const HandleNewCapsule = async () => {
         onClick={HandleNewCapsule}
         />
         </div>
-    );
+);
 };
 
 export default CreateCapsule;
